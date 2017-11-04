@@ -17,6 +17,7 @@ library
   hs-source-dirs:      src
   ghc-options:         -Wall
   exposed-modules:     Control.Arrow.Notation
+                       Control.Arrow.Notation.EnvArrow
                        Control.Monad.Trans.Key
                        Data.KeyMap
                        Data.NameSupply
