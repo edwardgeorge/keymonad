@@ -2,11 +2,11 @@ name:                keymonad
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/keymonad#readme
+homepage:            https://github.com/edwardgeorge/keymonad#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
+author:              Edward George
+maintainer:          edwardgeorge@gmail.com
 copyright:           2017 Author name here
 category:            Web
 build-type:          Simple
@@ -16,9 +16,18 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   ghc-options:         -Wall
-  exposed-modules:     Control.Monad.Key
+  exposed-modules:     Control.Arrow.Notation
+                       Control.Monad.Trans.Key
+                       Data.KeyMap
+                       Data.NameSupply
   build-depends:       base >= 4.7 && < 5
+                     , containers
+                     , transformers
   default-language:    Haskell2010
+  default-extensions:  GADTs
+                       GeneralizedNewtypeDeriving
+                       RankNTypes
+                       TypeOperators
 
 test-suite keymonad-test
   type:                exitcode-stdio-1.0
@@ -31,4 +40,4 @@ test-suite keymonad-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/keymonad
+  location: https://github.com/edwardgeorge/keymonad
