@@ -32,3 +32,9 @@ insert k@(Key n) v (KM m) = KM (Map.insert (Scoped n) (Lock k v) m)
 
 lookup :: Key s a -> KeyMap s -> Maybe a
 lookup k@(Key n) (KM m) = Map.lookup (Scoped n) m >>= unlock k
+
+record :: Monad m => a -> KeyMap s -> KeyT s m (Key s a, KeyMap s)
+record a m = do
+  key <- newKeyT
+  let n = insert key a m
+  return (key, n)
