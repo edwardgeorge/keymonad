@@ -4,6 +4,7 @@ import qualified Data.Map as Map
 import           Data.Type.Equality
 
 import Control.Monad.Trans.Key
+import Control.Monad.Trans.Key.Internal
 import Data.NameSupply
 
 data Box s where

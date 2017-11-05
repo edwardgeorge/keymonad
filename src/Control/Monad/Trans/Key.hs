@@ -2,8 +2,8 @@ module Control.Monad.Trans.Key
   (
   -- * Key Monad
     KeyM
-  , KeyT(..)
-  , Key(..)
+  , KeyT
+  , Key
   , newKey
   , newKeyT
   , runKeyM
@@ -13,31 +13,14 @@ module Control.Monad.Trans.Key
 
 import Control.Monad
 import Control.Monad.Trans.Reader
-import Control.Monad.Trans.Class
 import Data.Functor.Identity
 import Data.Type.Equality
 import Unsafe.Coerce
 
+import Control.Monad.Trans.Key.Internal
 import Data.NameSupply
 
-newtype KeyT s m a = KeyT { getKeyT :: ReaderT NameSupply m a }
-  deriving (Functor, MonadTrans)
-
-instance Monad m => Applicative (KeyT s m) where
-  pure = KeyT . pure
-  (<*>) = ap
-
-instance Monad m => Monad (KeyT s m) where
-  KeyT f >>= g =
-    KeyT . ReaderT $ \s -> do
-      let (sl, sr) = split s
-      r <- runReaderT f sl
-      runReaderT (getKeyT $ g r) sr
-
 type KeyM s = KeyT s Identity
-
-newtype Key s a = Key Name
-  deriving (Eq, Ord, Show)
 
 newKeyT :: Applicative m => KeyT s m (Key s a)
 newKeyT = KeyT . ReaderT $ pure . Key . supplyName

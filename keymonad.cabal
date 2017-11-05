@@ -21,6 +21,7 @@ library
                        Control.Monad.Trans.Key
                        Data.KeyMap
                        Data.NameSupply
+  other-modules:       Control.Monad.Trans.Key.Internal
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , transformers
