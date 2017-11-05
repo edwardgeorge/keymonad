@@ -1,10 +1,13 @@
 module Control.Monad.Trans.Key
   (
   -- * Key Monad
-    KeyM(..)
+    KeyM
+  , KeyT(..)
   , Key(..)
   , newKey
+  , newKeyT
   , runKeyM
+  , runKeyT
   , testKeyEquality
   ) where
 
